@@ -1,5 +1,5 @@
 function btnEnvoyer(){
-	$message = document.getElementById('leMessage') 
+	$message = document.getElementById('leMessage').value; 
 	$.ajax({
 		url: 'http://messenger.api.niamor.com/sendMessage',
 		method: 'POST',
@@ -9,5 +9,5 @@ function btnEnvoyer(){
 	to: 0
 }
 	})
+console.log('test');
 }
-console.log($message);
