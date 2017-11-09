@@ -9,5 +9,5 @@ function btnEnvoyer(){
 	to: 0
 }
 	})
-console.log('test');
+console.log($message);
 }
