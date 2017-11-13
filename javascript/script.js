@@ -29,6 +29,7 @@ function btnEnvoyer(){
   })
 }
 var othUse;
+var monEnvoi;
 
 function messRecu(){
   $.ajax({
@@ -51,8 +52,7 @@ function affichMess(oUse){
   document.getElementById('messRecus').innerHTML = "";
   
 for (i = 0; i < oUse.length; i++) {
-  othUse = oUse[i];
-  document.getElementById('messRecus').innerHTML += othUse.from.username+" : "+othUse.text+"<br>";
+  document.getElementById('messRecus').innerHTML += oUse[i].from.username+" : "+oUse[i].text+"<br>";
   }
 }
 
@@ -60,9 +60,9 @@ function afficheId(affId){
 	console.log(affId);
 	document.getElementById('colonneId').innerHTML = '';
 	for(j = 0; j < affId.length; j++)
-	{
-		affUse = affId[j];
-		document.getElementById('colonneId').innerHTML += affUse.username + '<br>';
+	{	
+		document.getElementById('colonneId').innerHTML += "<div><button onclick='btnId();' class='btn btn-outline-dark btn-block '>"+affId[j].username+'</button></div><br>';
+		
 	}
 
 }
