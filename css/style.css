@@ -6,3 +6,8 @@
 	border-color: #1F4788;
 	border-style: dashed;
 }
+#colonneId, #messRecus{
+	overflow-y: scroll;
+	height: 500px;
+	width: 100%;
+}

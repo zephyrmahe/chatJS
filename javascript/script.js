@@ -39,7 +39,10 @@ function messRecu(){
       lastId: 0
     }
 
-  }).done(affichMess)
+  }).done(affichMess);
+  $.ajax({
+  	url: 'http://messenger.api.niamor.com/getUsers',
+  }).done(afficheId)
 
 
 }
@@ -51,6 +54,17 @@ for (i = 0; i < oUse.length; i++) {
   othUse = oUse[i];
   document.getElementById('messRecus').innerHTML += othUse.from.username+" : "+othUse.text+"<br>";
   }
+}
+
+function afficheId(affId){
+	console.log(affId);
+	document.getElementById('colonneId').innerHTML = '';
+	for(j = 0; j < affId.length; j++)
+	{
+		affUse = affId[j];
+		document.getElementById('colonneId').innerHTML += affUse.username + '<br>';
+	}
+
 }
 
 $(document).ready(setInterval(messRecu, 3000));
@@ -66,12 +80,7 @@ function changePseudo(){
 		data: {
 		authKey : myUser.authKey,
 		username : recupPseudo}
-	}).done(changementLocal);
-	console.log(myUser.authKey);
+	})
 }
 
-function changementLocal(change){
-
-	console.log(change);
-}
 
