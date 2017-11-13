@@ -53,7 +53,7 @@ for (i = 0; i < oUse.length; i++) {
   }
 }
 
-$(document).ready(setInterval(messRecu, 30));
+$(document).ready(setInterval(messRecu, 3000));
 $(document).ready(messRecu);
 
 
