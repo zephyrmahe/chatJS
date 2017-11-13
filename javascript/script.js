@@ -4,18 +4,11 @@ function receptionId(){
 		url: 'http://messenger.api.niamor.com/createUser'
 	}).done(CUse);
 }
-console.log(authKey);
 	
 var myUser;
 
 function CUse(user){
 	myUser = user;
-	console.log(user);
-	console.log(myUser.authKey);
-	console.log(myUser.id);
-	console.log(myUser.createdAt);
-	console.log(myUser.lastMessageAt);
-	console.log(myUser.username);
 }
 receptionId();
 
@@ -32,3 +25,29 @@ function btnEnvoyer(){
         
 	})
 }
+var othUse;
+
+function messRecu(){
+	$.ajax({
+		url: 'http://messenger.api.niamor.com/getMessages',
+		method: 'post',
+		data: {
+			authKey: myUser.authKey,
+			lastId: 0
+		}
+
+	}).done(affichMess)
+
+}
+
+function affichMess(oUse){
+	document.getElementById('messRecus').innerHTML = "";
+	
+for (i = 0; i < oUse.length; i++) {
+	othUse = oUse[i];
+	document.getElementById('messRecus').innerHTML += othUse.from.username+" : "+othUse.text+"<br>";
+	}
+}
+
+$(document).ready(setInterval(messRecu, 30));
+$(document).ready(messRecu);
