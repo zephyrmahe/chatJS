@@ -13,6 +13,9 @@ function CUse(user){
 receptionId();
 
 function btnEnvoyer(){
+	
+	changePseudo();
+	console.log(myUser.username);
   $message = document.getElementById('leMessage').value;
   $.ajax({
     url: 'http://messenger.api.niamor.com/sendMessage',
@@ -38,6 +41,7 @@ function messRecu(){
 
   }).done(affichMess)
 
+
 }
 
 function affichMess(oUse){
@@ -51,3 +55,23 @@ for (i = 0; i < oUse.length; i++) {
 
 $(document).ready(setInterval(messRecu, 30));
 $(document).ready(messRecu);
+
+
+function changePseudo(){
+	var recupPseudo = document.getElementById('pseudo').value;
+	
+	$.ajax({
+		url:'http://messenger.api.niamor.com/changeUsername',
+		method : 'post',
+		data: {
+		authKey : myUser.authKey,
+		username : recupPseudo}
+	}).done(changementLocal);
+	console.log(myUser.authKey);
+}
+
+function changementLocal(change){
+
+	console.log(change);
+}
+
